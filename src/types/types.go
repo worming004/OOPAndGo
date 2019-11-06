@@ -5,9 +5,7 @@ import (
 	"time"
 )
 
-type Score struct {
-	scoreInt int
-}
+type IntAlias int
 
 type FootballPlayer struct {
 	Name     string
@@ -16,8 +14,8 @@ type FootballPlayer struct {
 
 type FootballTeam []FootballPlayer
 
-func (score *Score) Increment() {
-	score.scoreInt++
+type Score struct {
+	scoreInt int
 }
 
 func NewScore(value int) Score {
@@ -26,6 +24,10 @@ func NewScore(value int) Score {
 
 func (score Score) String() string {
 	return fmt.Sprintf("%v", score.scoreInt)
+}
+
+func (score *Score) Increment() {
+	score.scoreInt++
 }
 
 func main() {
