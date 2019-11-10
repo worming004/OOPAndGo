@@ -1,45 +1,52 @@
 package main
 
-import (
-	"fmt"
-	"io"
-	"strings"
-)
+// import (
+// 	"encoding/json"
+// 	"encoding/xml"
+// 	"fmt"
+// )
 
-type Todo struct{ Id int }
+// type Todo struct{ Id int }
 
-func (td Todo) String() string {
-	fmt.Sprintf("%v", td.Id)
-}
+// func (td Todo) String() string {
+// 	return fmt.Sprintf("%v", td.Id)
+// }
 
-type Parser interface {
-	ParseBytes(str io.Reader) Todo
-}
+// type Parser interface {
+// 	ParseBytes(content []byte) (Todo, error)
+// }
 
-type XmlParser struct{}
+// type XmlParser struct{}
 
-func (p XmlParser) ParseStream(str io.Reader) Todo {
-	result Todo
-	xml.Unmarshal()
-	return Todo{Id: 1}
-}
+// func (p XmlParser) ParseStream(content []byte) (Todo, error) {
+// 	result := Todo{}
+// 	err := xml.Unmarshal(content, &result)
+// 	return result, err
+// }
 
-type JsonParser struct{}
+// type JsonParser struct{}
 
-func (p JsonParser) ParseStream(str io.Reader) Todo {
-	//
-	return Todo{Id: 1}
-}
+// func (p JsonParser) ParseStream(content []byte) (Todo, error) {
+// 	result := Todo{}
+// 	err := json.Unmarshal(content, &result)
+// 	return result, err
+// }
 
-func main() {
-	xmlReader := strings.NewReader("<Todo><Id>1</Id></Todo>")
-	jsonReader := strings.NewReader("\"Todo\": {\"Id\": 2}")
+// func main() {
+// 	xmlReader := []byte("<Todo><Id>1</Id></Todo>")
+// 	jsonReader := []byte(`{"Id": 2}`)
 
-	xmlParser := XmlParser{}
-	jsonParser := JsonParser{}
+// 	xmlParser := XmlParser{}
+// 	jsonParser := JsonParser{}
 
-	todo := xmlParser.ParseStream(xmlReader)
-	fmt.Println(todo)
-	todo = jsonParser.ParseStream(jsonReader)
-	fmt.Println(todo)
-}
+// 	todo, err := xmlParser.ParseStream(xmlReader)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	fmt.Println(todo)
+// 	todo, err = jsonParser.ParseStream(jsonReader)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	fmt.Println(todo)
+// }
